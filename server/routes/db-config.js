@@ -1,9 +1,11 @@
-const sql = require('mysql')
+const sql = require('mysql2')
+
 const db = sql.createConnection({
   host: process.env.HOST,
-  pass: process.env.PASS,
+  user: process.env.USER,
+  password: process.env.PASS,
   database: process.env.DATABASE,
-  user: process.env.USER
+  multipleStatements: true,
 })
 
 module.exports = db

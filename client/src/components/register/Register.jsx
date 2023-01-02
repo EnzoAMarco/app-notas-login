@@ -21,7 +21,7 @@ const Register = () => {
     // if (user.length < 3 || pass.length < 3) return sendMessage('Por favor complete los campos de forma correcta');
     // sendMessage('Registro exitoso', 'success')
 
-    return user.length < 3 || pass.length < 3? sendMessage('Por favor complete los campos de forma correcta') : sendMessage('Sesión iniciada', 'success')
+    return user.length < 3 || pass.length < 3 ? sendMessage('Por favor complete los campos de forma correcta') : sendMessage('Sesión iniciada', 'success')
   }
 
   return (
