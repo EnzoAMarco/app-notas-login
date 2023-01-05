@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+// import { json } from 'react-router'
 import Navbar from '../Navbar'
 
 const Register = () => {
@@ -13,15 +14,18 @@ const Register = () => {
     Uatype(type); Umessage(text); Ualert({display: 'block'})
     setTimeout(()=>{
       Ualert({display: 'none'})
+      if (type === 'success') document.location.replace('/login')
     }, time * 1000);
   }
 
   const submit = e => {
     e.preventDefault()
-    // if (user.length < 3 || pass.length < 3) return sendMessage('Por favor complete los campos de forma correcta');
-    // sendMessage('Registro exitoso', 'success')
-
-    return user.length < 3 || pass.length < 3 ? sendMessage('Por favor complete los campos de forma correcta') : sendMessage('Sesión iniciada', 'success')
+    if (user.length < 3 || pass.length < 3) return sendMessage('Por favor complete los campos de forma correcta');
+    fetch('/api/register', {method: 'POST', body: JSON.stringify({ user, pass }), headers:{ 'Content-Type': 'application/json' } })
+    .then(res => res.json())
+    .then(data => {
+      data.status ? sendMessage(data.message, 'success') : sendMessage(data.message)
+    })
   }
 
   return (

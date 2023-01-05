@@ -9,19 +9,22 @@ const Login = () => {
   const [message, Umessage] = useState('')
   const [alert, Ualert] = useState({display: 'none'})
 
-  const sendMessage = (text, type = 'danger', time = 5) => {
+  const sendMessage = (text, type = 'danger', time = 1) => {
     Uatype(type); Umessage(text); Ualert({display: 'block'})
     setTimeout(()=>{
       Ualert({display: 'none'})
+      if (type === 'success') document.location.replace('/')
     }, time * 1000);
   }
 
   const submit = e => {
     e.preventDefault()
-    // if (user.length < 3 || pass.length < 3) return sendMessage('Por favor complete los campos de forma correcta');
-    // sendMessage('Sesión iniciada', 'success')
-
-    return user.length < 3 || pass.length < 3? sendMessage('Por favor complete los campos de forma correcta') : sendMessage('Sesión iniciada', 'success')
+    if (user.length < 3 || pass.length < 3) return sendMessage('Por favor complete los campos de forma correcta');
+    fetch('/api/login', { method: 'POST', body: JSON.stringify({ user, pass }), headers:{ 'Content-Type': 'application/json' }})
+    .then(res => res.json())
+    .then(data => {
+      data.status ? sendMessage(data.message, 'success') : sendMessage(data.message)
+    })
   }
 
   return (

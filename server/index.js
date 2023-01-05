@@ -5,10 +5,12 @@ const cookie = require('cookie-parser')
 const PORT = 5000 || process.env.PORT
 const app = express()
 
-db.connect(e => {if (e) throw e})
+// db.connect(e => {if (e) throw e})
+db.connect((err) => !err ? console.log('conectado a la base de datos') : console.log(JSON.stringify(err, undefined, 2)))
 
 app.use(cookie())
 app.use(express.json())
 app.use('/api', require('./controllers/app'))
 
 app.listen(PORT)
+console.log('-------'+ PORT +'---------'+ PORT +'---------'+ PORT +'----------------'+ PORT +'-------------'+ PORT +'-------------'+ PORT +'------------'+ PORT +'-------------')

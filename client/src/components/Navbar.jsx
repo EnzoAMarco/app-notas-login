@@ -1,7 +1,28 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+  const [logged, Ulogged] = useState(false)
+  const [user, Uuser] = useState('')
+
+  useEffect(() => {
+    fetch('/api/isLogged')
+    .then(res => res.json())
+    .then(data =>{
+      console.log(data);
+      if (data.status){ 
+        Ulogged(true) 
+        Uuser(data.user) 
+      } 
+      else{
+        Ulogged(false)
+      }
+
+    })
+    console.log(user);
+  }, [])
+
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
@@ -14,12 +35,20 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to='/' >Home</Link>
             </li>
+            {logged ?             
             <li className="nav-item">
-              <Link className="nav-link" to='/register' >Registrate</Link>
+              <a href='/login' className="nav-link">{user}</a>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to='/login' >Inicia sesión</Link>
-            </li>
+            : 
+            <>
+              <li className="nav-item">
+                <Link className="nav-link" to='/register' >Registrate</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to='/login' >Inicia sesión</Link>
+              </li>
+            </>
+            }
           </ul>
         </div>
       </div>
