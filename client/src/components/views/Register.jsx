@@ -24,7 +24,7 @@ const Register = () => {
     fetch('/api/register', {method: 'POST', body: JSON.stringify({ user, pass }), headers:{ 'Content-Type': 'application/json' } })
     .then(res => res.json())
     .then(data => {
-      data.status ? sendMessage(data.message, 'success') : sendMessage(data.message)
+      data.status ? sendMessage(data.message, 'success') && document.location.replace('/login'): sendMessage(data.message)
     })
   }
 

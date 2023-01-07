@@ -1,5 +1,5 @@
 const logout = (req, res) => {
   res.clearCookie('logUser')
-  res.text('ok')
+  return res.json({status:1})
 }
 module.exports = logout

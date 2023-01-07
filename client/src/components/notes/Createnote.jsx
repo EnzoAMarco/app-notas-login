@@ -7,9 +7,9 @@ const Createnote = () => {
   const [note, Unote] = useState();
 
   const sendMessage = (text, type = 'danger', time = 2) => {
-    Uatype(type); Umessage(text); Ualert({display: 'block'})
+    Uatype(type); Umessage(text); Ualert({visibility: 'visible'})
     setTimeout(()=>{
-      Ualert({display: 'none'})
+      Ualert({visibility: 'hidden'})
       if (type === 'success') document.location.replace('/')
     }, time * 1000);
   }
@@ -19,12 +19,12 @@ const Createnote = () => {
     fetch('api/createNote', {method: 'POST', body: JSON.stringify({title, note}), headers: {'Content-Type': 'application/json'}})
     .then(res => res.json())
     .then(data => {
-      data.status ? sendMessage(data.message, 'success') : sendMessage(data.message)
+      data.status ? sendMessage(data.message, 'success') && runNoteUpdate(prev => prev + 1) : sendMessage(data.message)
     })
   }
 
   return (
-    <div className="card mt-5">
+    <div className="card mt-2">
       <div className="card-body">
         <h3>Crear nota</h3>
         <form>
@@ -34,7 +34,7 @@ const Createnote = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="note" className="form-label">Nota</label>
-              <textarea className="form-control" id="note" rows="3" value={note} onChange={e=> Unote(e.target.value)}></textarea>
+              <textarea className="form-control" style={{resize: 'none'}} id="note" rows="3" value={note} onChange={e=> Unote(e.target.value)}></textarea>
             </div>
             <button onClick={e=> submit(e)} className="btn btn-primary">Crear nota</button>
           </form>

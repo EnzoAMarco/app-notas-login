@@ -9,10 +9,12 @@ const createNote = (req, res) => {
   if (user === null) return res.json({status: 0, message: 'Inicie sesión otra vez'})
   
   const {title, note} = req.body
-  const time = new Date(Date.now())
-  const date = time.getFullYear()+'-'+time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
 
-  db.query('INSERT INTO notes SET ?', [title, note, date], (err, result) => {
+  console.log(user, 'createNotes');
+  console.log(title, 'createNotes');
+  console.log(note, 'createNotes');
+
+  db.query('INSERT INTO notes values(null, ?, ?, ?, CURDATE())', [user.id, title, note], (err, result) => {
     if (err) throw err
     return res.json({status: 1, message: 'Nota añadida!'})
   })

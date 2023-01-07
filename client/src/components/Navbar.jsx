@@ -4,23 +4,28 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   const [logged, Ulogged] = useState(false)
   const [user, Uuser] = useState('')
+  // const [logRefresh, UlogRefresh] = useState(false)
 
   useEffect(() => {
     fetch('/api/isLogged')
     .then(res => res.json())
     .then(data =>{
-      console.log(data);
       if (data.status){ 
-        Ulogged(true) 
-        Uuser(data.user) 
-      } 
-      else{
-        Ulogged(false)
-      }
-
+        Ulogged(true); 
+        Uuser(()=>data.user)
+      }  
+      else Ulogged(false)
     })
-    console.log(user);
-  }, [])
+    console.log(1);
+  }, [logged])
+
+  const logout = (e, time = 1) => {
+    e.preventDefault()
+    fetch('/api/logout/')
+    .then(res => res.json())
+    .then(data =>data.status === 1 ? Ulogged(!logged) : null)
+    document.location.replace('/login')
+  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-light">
@@ -34,10 +39,15 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to='/' >Home</Link>
             </li>
-            {logged ?             
-            <li className="nav-item">
-              <a href='/login' className="nav-link">{user}</a>
-            </li>
+            {logged ?  
+            <>          
+              <li className="nav-item">
+                <span className="nav-link">{user}</span>
+              </li>
+              <li className="nav-item">
+                <span className="nav-link" style={{cursor: 'pointer'}} onClick={e=> logout(e)}>Logout</span>
+              </li>
+            </> 
             : 
             <>
               <li className="nav-item">

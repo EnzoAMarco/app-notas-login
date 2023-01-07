@@ -7,8 +7,6 @@ function Shownotes() {
       <div className="card-body">
         <h3>Notas</h3>
         <Note/>
-        <Note/>
-        <Note/>
       </div>
     </div>
   )
