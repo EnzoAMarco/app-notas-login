@@ -16,7 +16,7 @@ const Home = () => {
       <Navbar/>
       <div className='container'>
           <p>
-            HOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOME
+            HOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOMEHOME
           </p>
           <div className={`alert alert-${atype}`} style={alert} role="alert">
               {message}
