@@ -1,6 +1,5 @@
-import React from 'react'
 import { useState, useContext } from 'react'
-import { userContext } from '../home/Home'
+import { userContext } from '../views/Home'
 
 const Createnote = () => {
   const {Uatype, Umessage, Ualert, runNoteUpdate} = useContext(userContext)

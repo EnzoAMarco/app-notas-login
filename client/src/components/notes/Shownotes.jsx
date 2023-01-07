@@ -1,11 +1,15 @@
 import React from 'react'
+import Note from './Note'
 
-function ShowNotes() {
+function Shownotes() {
   return (
-    <div>
-      mostrar notas
+    <div className="card mt-5">
+      <div className="card-body">
+        <h3>Notas</h3>
+        <Note />
+      </div>
     </div>
   )
 }
 
-export default ShowNotes
+export default Shownotes

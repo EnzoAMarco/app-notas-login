@@ -1,6 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import Navbar from '../Navbar'
 import Createnote from '../notes/Createnote'
 import Shownotes from '../notes/Shownotes'

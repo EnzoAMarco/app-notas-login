@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-import Home from '../src/components/home/Home'
-import Register from '../src/components/register/Register'
-import Login from '../src/components/login/Login'
+import Home from '../src/components/views/Home'
+import Register from '../src/components/views/Register'
+import Login from '../src/components/views/Login'
 import Nopage from './components/Nopage';
 
 const App = () => {
