@@ -16,7 +16,7 @@ const Createnote = () => {
   const submit = e => {
     e.preventDefault()
     if (title.length < 3 || note.length < 3) return sendMessage('Los campos tiene pocos caracteres')
-    fetch('api/createNote', {method: 'POST', body: JSON.stringify({title, note}), headers: {'Content-Type': 'application/json'}})
+    fetch('/api/createNote', {method: 'POST', body: JSON.stringify({title, note}), headers: {'Content-Type': 'application/json'}})
     .then(res => res.json())
     .then(data => {
       data.status ? sendMessage(data.message, 'success') && runNoteUpdate(prev => prev + 1) : sendMessage(data.message)

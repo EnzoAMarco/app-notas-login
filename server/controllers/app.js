@@ -14,8 +14,9 @@ const getNotes = require('./notes/getNotes')
 router.post('/register', register)
 router.post('/login', login)
 router.post('/createNote', createNote)
-router.post('/updateNote', updateNote)
-router.post('/deleteNote', deleteNote)
+
+router.put('/updateNote', updateNote)
+router.put ('/deleteNote', deleteNote)
 
 router.get('/logout', logout)
 router.get('/isLogged', isLogged)

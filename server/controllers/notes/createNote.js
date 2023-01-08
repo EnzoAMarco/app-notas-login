@@ -10,11 +10,7 @@ const createNote = (req, res) => {
   
   const {title, note} = req.body
 
-  console.log(user, 'createNotes');
-  console.log(title, 'createNotes');
-  console.log(note, 'createNotes');
-
-  db.query('INSERT INTO notes values(null, ?, ?, ?, CURDATE())', [user.id, title, note], (err, result) => {
+  db.query('INSERT INTO notes values(null, ?, ?, ?, CURDATE(), 1)', [user.id, title, note], (err, result) => {
     if (err) throw err
     return res.json({status: 1, message: 'Nota añadida!'})
   })

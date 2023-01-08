@@ -19,7 +19,7 @@ const Navbar = () => {
     console.log(1);
   }, [logged])
 
-  const logout = (e, time = 1) => {
+  const logout = (e) => {
     e.preventDefault()
     fetch('/api/logout/')
     .then(res => res.json())
