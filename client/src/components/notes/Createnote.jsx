@@ -24,10 +24,10 @@ const Createnote = () => {
   }
 
   return (
-    <div className="card mt-2">
+    <div className="card mt-2 text-bg-dark">
       <div className="card-body">
         <h3>Crear nota</h3>
-        <form>
+        <form className=''>
             <div className="mb-3">
               <label htmlFor="title" className="form-label" >Titulo</label>
               <input type="text" className="form-control" id="title" value={title} onChange={e=> Utitle(e.target.value)} />
@@ -36,7 +36,7 @@ const Createnote = () => {
               <label htmlFor="note" className="form-label">Nota</label>
               <textarea className="form-control" style={{resize: 'none'}} id="note" rows="3" value={note} onChange={e=> Unote(e.target.value)}></textarea>
             </div>
-            <button onClick={e=> submit(e)} className="btn btn-primary">Crear nota</button>
+            <button onClick={e=> submit(e)} className="btn btn-light">Crear nota</button>
           </form>
       </div>
     </div>

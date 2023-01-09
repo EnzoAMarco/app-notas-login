@@ -6,7 +6,6 @@ const login = require('./login')
 const logout = require('./logout')
 const isLogged = require('./isLogged')
 const createNote = require('./notes/createNote')
-const updateNote = require('./notes/updateNote')
 const deleteNote = require('./notes/deleteNote')
 const getNotes = require('./notes/getNotes')
 
@@ -15,7 +14,6 @@ router.post('/register', register)
 router.post('/login', login)
 router.post('/createNote', createNote)
 
-router.put('/updateNote', updateNote)
 router.put ('/deleteNote', deleteNote)
 
 router.get('/logout', logout)

@@ -34,7 +34,7 @@ const Login = () => {
         <div className={`alert alert-${atype}`} style={alert} role="alert">
           {message}
         </div>  
-        <div className='card'>
+        <div className='card text-bg-dark'>
           <div className='card-body'>
             <form>
               <div className="mb-3">
@@ -45,7 +45,7 @@ const Login = () => {
                 <label htmlFor="password" className="form-label">Contraseña</label>
                 <input type="password" className="form-control" id="password" onChange={e=> Upass(e.target.value)} />
               </div>
-              <button onClick={e=> submit(e)} className="btn btn-primary">Iniciar sesión</button>
+              <button onClick={e=> submit(e)} className="btn btn-light">Iniciar sesión</button>
             </form>
           </div>
         </div>

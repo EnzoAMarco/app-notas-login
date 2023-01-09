@@ -35,7 +35,7 @@ const Register = () => {
         <div className={`alert alert-${atype}`} style={alert} role="alert">
           {message}
         </div>  
-        <div className='card'>
+        <div className='card text-bg-dark'>
           <div className='card-body'>
             <form>
               <div className="mb-3">
@@ -46,7 +46,7 @@ const Register = () => {
                 <label htmlFor="password" className="form-label">Contraseña</label>
                 <input type="password" className="form-control" id="password" onChange={e=> Upass(e.target.value)} />
               </div>
-              <button onClick={e=> submit(e)} className="btn btn-primary">Regístrate</button>
+              <button onClick={e=> submit(e)} className="btn btn-light">Regístrate</button>
             </form>
           </div>
         </div>
